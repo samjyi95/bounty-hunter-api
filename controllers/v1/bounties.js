@@ -1,9 +1,17 @@
 // Create router and reference the models
+let db = require('../../models')
 let router = require('express').Router()
 
 // GET /v1/bounties - Retrieve all bounties in the DB
 router.get('/', (req, res) => {
-    res.send('TBD - get the bounties')
+    db.Bounty.find()
+    .then(bounties => {
+        res.send(bounties)
+    })
+    .catch(err => {
+        console.log('Error in GET /bounties', err)
+        res.status(503).send({ message: 'Database asleep?' })
+    })
 })
 
 // POST /v1/bounties - Create a new bounty

@@ -31,7 +31,19 @@ router.delete('/', (req, res) => {
 
 // GET /v1/bounties/:id - Retrieve a single bounty by its id
 router.get('/:id', (req, res) => {
-    res.send('TBD - get one bounty')
+    db.Bounty.findById(req.params.id)
+    .then(bounty => {
+        if (bounty) {
+            res.send(bounty)
+        }
+        else {
+            res.status(404).send({ message: 'Resource not located' })
+        }
+    })
+    .catch(err => {
+        console.log('Error in GET /bounties/:id', err)
+        res.status(503).send({ message: 'Service unavailable' })
+    })
 })
 
 // PUT /v1/bounties/:id - Update a single bounty

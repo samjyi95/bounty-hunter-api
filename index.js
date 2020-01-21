@@ -10,7 +10,7 @@ app.use(express.json()) // Accept data from AJAX requests
 // TODO: Add CORS
 
 // Include any controllers we have
-// TBD
+app.use('/v1/bounties', require('./controllers/v1/bounties'))
 
 // Define a catch-all route (AKA 404)
 app.get('*', (req, res) => {

@@ -7,7 +7,7 @@ let app = express()
 // Set up middleware needed
 app.use(express.urlencoded({ extended: false })) // Accept form data
 app.use(express.json()) // Accept data from AJAX requests
-// TODO: Add CORS
+app.use(cors())
 
 // Include any controllers we have
 app.use('/v1/bounties', require('./controllers/v1/bounties'))

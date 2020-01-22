@@ -1,4 +1,5 @@
 // Require the node modules needed
+let cors = require('cors')
 let express = require('express')
 
 // Create an app instance

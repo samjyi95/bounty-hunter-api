@@ -1,17 +1,14 @@
 // Require the node modules needed
-let cors = require('cors')
 let express = require('express')
 
 // Create an app instance
 let app = express()
 
 // Set up middleware needed
-app.use(express.urlencoded({ extended: false })) // Accept form data
-app.use(express.json()) // Accept data from AJAX requests
-app.use(cors())
+// TODO: body-parser, cors
 
 // Include any controllers we have
-app.use('/v1/bounties', require('./controllers/v1/bounties'))
+// TODO!
 
 // Define a catch-all route (AKA 404)
 app.get('*', (req, res) => {
